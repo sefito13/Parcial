@@ -1,0 +1,50 @@
+
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+
+    <mat-toolbar>Menú</mat-toolbar>
+
+    <mat-nav-list>
+
+      <a mat-list-item routerLink="/materias">
+        Materias
+      </a>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar style="background-color: rgb(214, 48, 48);">
+
+      @if (isHandset$ | async) {
+
+        <button
+          type="button"
+          aria-label="Abrir menú"
+          matIconButton
+          (click)="drawer.toggle()">
+
+          <mat-icon>menu</mat-icon>
+
+        </button>
+
+      }
+
+      <span>Materias del Semestre</span>
+
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
